@@ -7,11 +7,19 @@ import dagger.Module
 import dagger.Provides
 import io.malykh.anton.daggerapplication.DaggerApp
 import io.malykh.anton.daggerapplication.PreferencesTextStorage
-import io.malykh.anton.data.Data
+import io.malykh.anton.data.Core
+import io.malykh.anton.data.di.TextRequestsModule
+import io.malykh.anton.shared.Shared
+import io.malykh.anton.shared.di.SharedModule
 import javax.inject.Named
 import javax.inject.Singleton
 
-@Module
+@Module(
+    includes = [
+        TextRequestsModule::class,
+        SharedModule::class
+    ]
+)
 class AppModule {
 
     @Provides
@@ -31,8 +39,12 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun provideData(preferences: SharedPreferences): Data {
-        Data.initialize(PreferencesTextStorage(preferences))
-        return Data.get()
+    fun provideCore(preferences: SharedPreferences): Core {
+        Core.initialize(PreferencesTextStorage(preferences))
+        return Core.get()
     }
+
+    @Provides
+    @Singleton
+    fun provideShared() = Shared.get()
 }

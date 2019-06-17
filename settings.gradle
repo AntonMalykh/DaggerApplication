@@ -1,1 +1,1 @@
-include ':app', ':data', ':screen'
+include ':app', ':core', ':screen', ':common', ':shared'

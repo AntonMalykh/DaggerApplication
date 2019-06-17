@@ -14,13 +14,13 @@ import javax.inject.Singleton
     modules = [
         AndroidSupportInjectionModule::class,
         AppModule::class,
-        ActivityBindingModule::class,
-        ViewModelBindingModule::class
+        ActivityBindingModule::class
+//        ViewModelBindingModule::class
     ]
 )
 interface AppComponent: AndroidInjector<DaggerApp>{
 
-    fun viewModels() : Map<Class<out ViewModel>, Provider<ViewModel>>
+//    fun viewModels(): Map<Class<out ViewModel>, Provider<ViewModel>>
 
     @Component.Factory
     interface Factory {

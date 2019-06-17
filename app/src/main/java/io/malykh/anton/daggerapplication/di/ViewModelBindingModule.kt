@@ -10,13 +10,13 @@ import io.malykh.anton.screen.ViewModelFactory
 import io.malykh.anton.screen.di.ViewModelKey
 
 @Module
-interface ViewModelBindingModule {
+abstract class ViewModelBindingModule {
 
     @Binds
-    fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory
+    abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory
 
     @Binds
     @IntoMap
     @ViewModelKey(ScreenViewModel::class)
-    fun bindScreenViewModel(screenViewModel: ScreenViewModel): ViewModel
+    abstract fun bindScreenViewModel(screenViewModel: ScreenViewModel): ViewModel
 }
