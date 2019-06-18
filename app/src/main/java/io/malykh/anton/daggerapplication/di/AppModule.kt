@@ -8,18 +8,11 @@ import dagger.Provides
 import io.malykh.anton.daggerapplication.DaggerApp
 import io.malykh.anton.daggerapplication.PreferencesTextStorage
 import io.malykh.anton.data.Core
-import io.malykh.anton.data.di.TextRequestsModule
 import io.malykh.anton.shared.Shared
-import io.malykh.anton.shared.di.SharedModule
 import javax.inject.Named
 import javax.inject.Singleton
 
-@Module(
-    includes = [
-        TextRequestsModule::class,
-        SharedModule::class
-    ]
-)
+@Module
 class AppModule {
 
     @Provides

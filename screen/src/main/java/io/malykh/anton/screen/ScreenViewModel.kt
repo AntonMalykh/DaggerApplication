@@ -3,27 +3,45 @@ package io.malykh.anton.screen
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import io.malykh.anton.data.RequestFactory
+import io.malykh.anton.data.TextRequests
 import io.malykh.anton.shared.DispatcherProvider
 import kotlinx.coroutines.*
+import kotlinx.coroutines.test.withTestContext
 import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
-class ScreenViewModel @Inject constructor(var requestFactory: RequestFactory,
-                                          dispatchers: DispatcherProvider)
+class ScreenViewModel @Inject constructor(private val textRequests: TextRequests,
+                                          private val dispatchers: DispatcherProvider)
     : ViewModel(), CoroutineScope{
 
     override val coroutineContext: CoroutineContext = dispatchers.Main() + Job()
 
     private val textData = MutableLiveData<String>()
 
+    private var clearJob: Job? = null
+
+    fun getTextLiveData(): LiveData<String> = textData
+
     fun onButtonClicked() {
+        clearJob?.cancel()
         launch {
-            textData.value = requestFactory.getTextRequest().execute().getData()
+            textData.value = withContext(dispatchers.Computation()){textRequests.getText().execute().getData()}
         }
     }
 
-    fun getTextLiveData(): LiveData<String> = textData
+    fun onClearClicked() {
+        clearJob?.cancel()
+        clearJob = launch {
+            val isCleared = withContext(dispatchers.Computation()){textRequests.clearSavedText().execute().getData()}
+            textData.value = when {
+                isCleared -> "Cleared"
+                else -> "Nothing to be cleared"
+            }
+
+            delay(500)
+            textData.value = ""
+        }
+    }
 
     override fun onCleared() {
         super.onCleared()

@@ -25,7 +25,7 @@ class Core private constructor(internal val textStorage: TextStorage){
     }
 
     @Inject
-    lateinit var requests: RequestFactory
+    lateinit var requests: TextRequests
 
     init {
         DaggerCoreComponent

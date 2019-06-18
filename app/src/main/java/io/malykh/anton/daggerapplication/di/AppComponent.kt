@@ -6,6 +6,7 @@ import dagger.Component
 import dagger.android.AndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule
 import io.malykh.anton.daggerapplication.DaggerApp
+import io.malykh.anton.screen.di.ScreenModule
 import javax.inject.Provider
 import javax.inject.Singleton
 
@@ -14,13 +15,14 @@ import javax.inject.Singleton
     modules = [
         AndroidSupportInjectionModule::class,
         AppModule::class,
-        ActivityBindingModule::class
-//        ViewModelBindingModule::class
+        ActivityBindingModule::class,
+        ViewModelBindingModule::class,
+        ScreenModule::class
     ]
 )
 interface AppComponent: AndroidInjector<DaggerApp>{
 
-//    fun viewModels(): Map<Class<out ViewModel>, Provider<ViewModel>>
+    fun viewModels(): Map<Class<out ViewModel>, Provider<ViewModel>>
 
     @Component.Factory
     interface Factory {

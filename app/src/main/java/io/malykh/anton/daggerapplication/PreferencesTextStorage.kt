@@ -19,4 +19,13 @@ class PreferencesTextStorage(private val preferences: SharedPreferences) : TextS
             putString(KEY_TEXT, text)
         }
     }
+
+    override fun clear(): Boolean {
+        if (!preferences.contains(KEY_TEXT))
+            return false
+        preferences.edit{
+            putString(KEY_TEXT, null)
+        }
+        return true
+    }
 }

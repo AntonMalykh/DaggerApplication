@@ -3,8 +3,8 @@ package io.malykh.anton.data.di
 import dagger.Module
 import dagger.Provides
 import io.malykh.anton.data.Core
-import io.malykh.anton.data.RequestFactory
-import io.malykh.anton.data.RequestFactoryImpl
+import io.malykh.anton.data.TextRequests
+import io.malykh.anton.data.TextRequestsImpl
 import io.malykh.anton.data.TextStorage
 import javax.inject.Singleton
 
@@ -17,7 +17,7 @@ internal class CoreModule {
 
     @Provides
     @Singleton
-    fun provideRequestFactory(textStorage: TextStorage): RequestFactory {
-        return RequestFactoryImpl(textStorage)
+    fun provideRequestFactory(textStorage: TextStorage): TextRequests {
+        return TextRequestsImpl(textStorage)
     }
 }
