@@ -6,8 +6,7 @@ import io.malykh.anton.shared.DispatcherProvider
 import io.malykh.anton.shared.Shared
 
 @Module
-class SharedModule {
-
+class SharedDispatchersModule {
     @Provides
     fun provideDispatchers(shared: Shared): DispatcherProvider = shared.dispatchers
 }

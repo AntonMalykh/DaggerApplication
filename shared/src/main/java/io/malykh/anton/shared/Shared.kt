@@ -1,12 +1,12 @@
 package io.malykh.anton.shared
 
 import io.malykh.anton.shared.di.DaggerSharedComponent
+import javax.inject.Inject
+import javax.inject.Singleton
 
 class Shared private constructor(){
-    val dispatchers: DispatcherProvider = DispatcherProviderProd()
-
     companion object{
-        @Volatile var shared : Shared? = null
+        @Volatile private var shared : Shared? = null
         fun get(): Shared {
             if (shared == null) {
                 synchronized(Shared::class){
@@ -19,7 +19,14 @@ class Shared private constructor(){
         }
     }
 
+    @Inject
+    @Singleton
+    internal lateinit var dispatchers: DispatcherProviderProd
+
     init {
-        DaggerSharedComponent.factory().create()
+        DaggerSharedComponent
+            .factory()
+            .create()
+            .inject(this)
     }
 }

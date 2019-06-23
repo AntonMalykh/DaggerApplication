@@ -1,11 +1,22 @@
 package io.malykh.anton.data
 
-internal class TextRequestsImpl(private val textStorage: TextStorage) : TextRequests {
+import javax.inject.Inject
+import javax.inject.Provider
+import javax.inject.Singleton
+
+@Singleton
+internal class TextRequestsImpl @Inject constructor() : TextRequests {
+
+    @Inject
+    lateinit var getTextRequestProvider: Provider<GetTextRequest>
+    @Inject
+    lateinit var getClearTextRequestProvider: Provider<ClearTextRequest>
+
     override fun getText(): Request<String> {
-        return GetTextRequest(textStorage)
+        return getTextRequestProvider.get()
     }
 
     override fun clearSavedText(): Request<Boolean> {
-        return ClearTextRequest(textStorage)
+        return getClearTextRequestProvider.get()
     }
 }

@@ -1,8 +1,8 @@
 package io.malykh.anton.data
 
 import io.malykh.anton.data.di.DaggerCoreComponent
-import java.util.*
 import javax.inject.Inject
+import javax.inject.Singleton
 
 class Core private constructor(internal val textStorage: TextStorage){
 
@@ -19,13 +19,16 @@ class Core private constructor(internal val textStorage: TextStorage){
         }
 
         fun get(): Core {
-            Objects.requireNonNull(data,  "initialize Core first")
+            checkNotNull(data){
+                "initialize Core first"
+            }
             return data!!
         }
     }
 
     @Inject
-    lateinit var requests: TextRequests
+    @Singleton
+    internal lateinit var requests: TextRequestsImpl
 
     init {
         DaggerCoreComponent

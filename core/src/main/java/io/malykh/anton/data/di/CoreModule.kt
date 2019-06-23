@@ -6,6 +6,8 @@ import io.malykh.anton.data.Core
 import io.malykh.anton.data.TextRequests
 import io.malykh.anton.data.TextRequestsImpl
 import io.malykh.anton.data.TextStorage
+import io.malykh.anton.shared.DispatcherProvider
+import io.malykh.anton.shared.Shared
 import javax.inject.Singleton
 
 @Module
@@ -17,7 +19,5 @@ internal class CoreModule {
 
     @Provides
     @Singleton
-    fun provideRequestFactory(textStorage: TextStorage): TextRequests {
-        return TextRequestsImpl(textStorage)
-    }
+    fun provideShared() = Shared.get()
 }
