@@ -21,7 +21,11 @@ class Shared private constructor(){
 
     @Inject
     @Singleton
-    internal lateinit var dispatchers: DispatcherProviderProd
+    internal lateinit var dispatchersCoroutines: DispatcherProviderCoroutinesProd
+
+    @Inject
+    @Singleton
+    internal lateinit var dispatchersRx: DispatcherProviderRxProd
 
     init {
         DaggerSharedComponent

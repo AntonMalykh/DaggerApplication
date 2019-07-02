@@ -28,7 +28,11 @@ class Core private constructor(internal val textStorage: TextStorage){
 
     @Inject
     @Singleton
-    internal lateinit var requests: TextRequestsImpl
+    internal lateinit var requestsCoroutines: TextRequestsCoroutinesImpl
+
+    @Inject
+    @Singleton
+    internal lateinit var requestsRx: TextRequestsRxImpl
 
     init {
         DaggerCoreComponent

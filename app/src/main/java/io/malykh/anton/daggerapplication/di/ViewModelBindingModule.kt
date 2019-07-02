@@ -5,9 +5,11 @@ import androidx.lifecycle.ViewModelProvider
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
-import io.malykh.anton.screen.ScreenViewModel
+import io.malykh.anton.screen.screen.ScreenViewModelCoroutines
 import io.malykh.anton.screen.ViewModelFactory
 import io.malykh.anton.screen.di.ViewModelKey
+import io.malykh.anton.screen.screen_1.ScreenRx
+import io.malykh.anton.screen.screen_1.ScreenViewModelRx
 
 @Module
 abstract class ViewModelBindingModule {
@@ -17,6 +19,11 @@ abstract class ViewModelBindingModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(ScreenViewModel::class)
-    abstract fun bindScreenViewModel(screenViewModel: ScreenViewModel): ViewModel
+    @ViewModelKey(ScreenViewModelCoroutines::class)
+    abstract fun bindScreenViewModelCoroutines(screenViewModel: ScreenViewModelCoroutines): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(ScreenViewModelRx::class)
+    abstract fun bindScreenViewModelRx(screenViewModel: ScreenViewModelRx): ViewModel
 }

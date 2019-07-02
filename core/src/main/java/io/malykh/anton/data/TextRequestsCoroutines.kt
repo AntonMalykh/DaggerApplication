@@ -1,6 +1,6 @@
 package io.malykh.anton.data
 
-interface TextRequests {
+interface TextRequestsCoroutines {
     fun getText(): Request<String>
     fun clearSavedText(): Request<Boolean>
 }

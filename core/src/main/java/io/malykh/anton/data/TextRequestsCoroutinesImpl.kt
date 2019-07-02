@@ -5,12 +5,10 @@ import javax.inject.Provider
 import javax.inject.Singleton
 
 @Singleton
-internal class TextRequestsImpl @Inject constructor() : TextRequests {
-
-    @Inject
-    lateinit var getTextRequestProvider: Provider<GetTextRequest>
-    @Inject
-    lateinit var getClearTextRequestProvider: Provider<ClearTextRequest>
+internal class TextRequestsCoroutinesImpl
+@Inject constructor(private val getTextRequestProvider: Provider<GetTextRequest>,
+                    private val getClearTextRequestProvider: Provider<ClearTextRequest>)
+    : TextRequestsCoroutines {
 
     override fun getText(): Request<String> {
         return getTextRequestProvider.get()

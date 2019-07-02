@@ -1,17 +1,17 @@
-package io.malykh.anton.screen
+package io.malykh.anton.screen.screen
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import io.malykh.anton.data.TextRequests
-import io.malykh.anton.shared.DispatcherProvider
+import io.malykh.anton.data.TextRequestsCoroutines
+import io.malykh.anton.shared.DispatcherProviderCoroutines
 import kotlinx.coroutines.*
-import kotlinx.coroutines.test.withTestContext
 import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
-class ScreenViewModel @Inject constructor(private val textRequests: TextRequests,
-                                          private val dispatchers: DispatcherProvider)
+class ScreenViewModelCoroutines
+@Inject constructor(private val textRequests: TextRequestsCoroutines,
+                    private val dispatchers: DispatcherProviderCoroutines)
     : ViewModel(), CoroutineScope{
 
     override val coroutineContext: CoroutineContext = dispatchers.Main() + Job()

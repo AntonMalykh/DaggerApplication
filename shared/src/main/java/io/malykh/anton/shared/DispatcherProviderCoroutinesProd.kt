@@ -5,7 +5,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-internal class DispatcherProviderProd @Inject constructor() : DispatcherProvider {
+internal class DispatcherProviderCoroutinesProd @Inject constructor() : DispatcherProviderCoroutines {
     override fun Main() = Dispatchers.Main
     override fun Computation() = Dispatchers.Default
     override fun IO() = Dispatchers.IO

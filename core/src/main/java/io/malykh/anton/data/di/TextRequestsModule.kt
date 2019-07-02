@@ -3,11 +3,14 @@ package io.malykh.anton.data.di
 import dagger.Module
 import dagger.Provides
 import io.malykh.anton.data.Core
-import io.malykh.anton.data.TextRequests
+import io.malykh.anton.data.TextRequestsCoroutines
 
 @Module
 class TextRequestsModule {
 
     @Provides
-    fun provideTextRequests(core: Core): TextRequests = core.requests
+    fun provideTextRequestsCoroutines(core: Core): TextRequestsCoroutines = core.requestsCoroutines
+
+    @Provides
+    fun provideTextRequestsRx(core: Core): TextRequestsRx = core.requestsRx
 }

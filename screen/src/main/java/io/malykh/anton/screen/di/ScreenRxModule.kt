@@ -4,7 +4,7 @@ import dagger.Module
 
 @Module(
     includes = [
-        ScreenViewModelModule::class
+        ScreenViewModelRxModule::class
     ]
 )
-class ScreenModule
+class ScreenRxModule

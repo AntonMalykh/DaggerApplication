@@ -3,7 +3,7 @@
 
     <application>
         <activity
-                android:name=".Screen"
+                android:name=".screen.ScreenCoroutines"
                 android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
             <intent-filter>

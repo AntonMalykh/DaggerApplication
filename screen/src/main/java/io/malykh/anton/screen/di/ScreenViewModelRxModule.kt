@@ -10,4 +10,4 @@ import io.malykh.anton.shared.di.SharedDispatchersModule
         SharedDispatchersModule::class
     ]
 )
-class ScreenViewModelModule
+class ScreenViewModelRxModule

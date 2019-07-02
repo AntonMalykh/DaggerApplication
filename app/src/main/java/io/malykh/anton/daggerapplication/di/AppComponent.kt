@@ -6,7 +6,7 @@ import dagger.Component
 import dagger.android.AndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule
 import io.malykh.anton.daggerapplication.DaggerApp
-import io.malykh.anton.screen.di.ScreenModule
+import io.malykh.anton.screen.di.ScreenCoroutinesModule
 import javax.inject.Provider
 import javax.inject.Singleton
 
@@ -17,7 +17,7 @@ import javax.inject.Singleton
         AppModule::class,
         ActivityBindingModule::class,
         ViewModelBindingModule::class,
-        ScreenModule::class
+        ScreenCoroutinesModule::class
     ]
 )
 interface AppComponent: AndroidInjector<DaggerApp>{

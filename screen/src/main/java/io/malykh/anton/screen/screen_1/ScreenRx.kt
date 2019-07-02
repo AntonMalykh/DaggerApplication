@@ -1,14 +1,13 @@
-package io.malykh.anton.screen
+package io.malykh.anton.screen.screen_1
 
 import android.os.Bundle
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import dagger.android.support.DaggerAppCompatActivity
-import kotlinx.android.synthetic.main.screen.*
+import io.malykh.anton.screen.R
 import javax.inject.Inject
 
-class Screen: DaggerAppCompatActivity() {
+class ScreenRx: DaggerAppCompatActivity() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -20,18 +19,16 @@ class Screen: DaggerAppCompatActivity() {
         val viewModel =
             ViewModelProviders
                 .of(this, viewModelFactory)
-                .get(ScreenViewModel::class.java)
+                .get(ScreenViewModelRx::class.java)
 
-        button.setOnClickListener { viewModel.onButtonClicked() }
-        clear.setOnClickListener { viewModel.onClearClicked() }
 
         observeViewModel(viewModel)
     }
 
-    private fun observeViewModel(viewModel: ScreenViewModel) {
-        viewModel.getTextLiveData().observe(
-            this,
-            Observer { text.text = it }
-        )
+    private fun observeViewModel(viewModel: ScreenViewModelRx) {
+//        viewModel.getTextLiveData().observe(
+//            this,
+//            Observer { text.text = it }
+//        )
     }
 }
