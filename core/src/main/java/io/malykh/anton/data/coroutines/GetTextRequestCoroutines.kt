@@ -1,11 +1,17 @@
-package io.malykh.anton.data
+package io.malykh.anton.data.coroutines
 
+import io.malykh.anton.data.Response
+import io.malykh.anton.data.ResponseImpl
+import io.malykh.anton.data.TextStorage
 import io.malykh.anton.shared.DispatcherProviderCoroutines
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-internal class GetTextRequest @Inject constructor(private val textStorage: TextStorage,
-                                                  private val dispatchers: DispatcherProviderCoroutines) : Request<String> {
+internal class GetTextRequestCoroutines @Inject constructor(
+    private val textStorage: TextStorage,
+    private val dispatchers: DispatcherProviderCoroutines
+) :
+    RequestCoroutines<String> {
 
     override suspend fun execute(): Response<String> {
         return withContext(dispatchers.Computation()){

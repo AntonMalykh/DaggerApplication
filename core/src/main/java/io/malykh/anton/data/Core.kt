@@ -1,6 +1,8 @@
 package io.malykh.anton.data
 
+import io.malykh.anton.data.coroutines.TextRequestsCoroutinesImpl
 import io.malykh.anton.data.di.DaggerCoreComponent
+import io.malykh.anton.data.rx.TextRequestsRxImpl
 import javax.inject.Inject
 import javax.inject.Singleton
 

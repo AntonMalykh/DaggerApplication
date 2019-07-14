@@ -3,7 +3,7 @@ package io.malykh.anton.screen.screen
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import io.malykh.anton.data.TextRequestsCoroutines
+import io.malykh.anton.data.coroutines.TextRequestsCoroutines
 import io.malykh.anton.shared.DispatcherProviderCoroutines
 import kotlinx.coroutines.*
 import javax.inject.Inject
